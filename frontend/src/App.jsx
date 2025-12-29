@@ -1,5 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router";
+import { HelmetProvider } from "react-helmet-async";
+import { AshramProvider } from "./context/AshramContext";
 import Navbar from "./components/layout/Navbar.jsx";
 import About from "./pages/About.jsx";
 import Donate from "./pages/Donate.jsx";
@@ -9,16 +11,18 @@ import Shop from "./pages/Shop.jsx";
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/donate" element={<Donate />} />
-        <Route path="/shop" element={<Shop />} />
-      </Routes>
-    </>
+    <HelmetProvider>
+      <AshramProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/donate" element={<Donate />} />
+          <Route path="/shop" element={<Shop />} />
+        </Routes>
+      </AshramProvider>
+    </HelmetProvider>
   );
 }
 
